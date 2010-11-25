@@ -5,9 +5,10 @@ log_directory: log
 log_level: Logger::DEBUG
 
 cas_database:
-  adapter: sqlite3
-  database: db/cas.db
-  timeout: 5000
+  adapter: mysql2
+  database: cas
+  username: root
+  password: 
 
 cas_adapter:
   adapter: demo

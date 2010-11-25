@@ -1,2 +1,3 @@
 db/cas.db
-log/*
+log/castronaut.log
+log/passenger.3010.log

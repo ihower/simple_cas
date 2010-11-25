@@ -1,6 +1,9 @@
-require 'rubygems'
+require "rubygems"
+require "bundler/setup"
 
 require 'active_support'
+
+require 'mysql2'
 require 'active_record'
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'castronaut'))
