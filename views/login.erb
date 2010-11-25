@@ -1,0 +1,31 @@
+<% unless presenter.messages.empty? %>
+  <p class="flash"><%= presenter.messages.to_s %></p>
+<% end %>
+
+<div class="form container">
+    <form method="post" action="/login">
+      
+      <p class="instruction">
+        <strong>Please login to continue</strong>
+      </p>
+      
+      <div class="field">
+        <label for="username">Username</label>
+        <input name="username" id="username" type="text" autocomplete="off" />
+      </div>
+      
+      <div class="field">
+        <label for="password">Password</label>
+        <input name="password" id="password" type="password" />
+      </div>
+      
+      <div class="buttons">
+        <input type="submit" class="button login" value="Login" />
+      </div>
+      
+      <input type="hidden" name="lt" id="lt" value="<%= presenter.login_ticket %>" />
+      <input type="hidden" name="service" id="service" value="<%= presenter.service %>" />
+      
+    </form>
+
+</div>

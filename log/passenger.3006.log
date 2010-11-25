@@ -1,0 +1,44 @@
+[ pid=97004 thr=2148444460 file=utils.rb:176 time=2010-11-25 11:17:20.832 ]: *** Exception Errno::ENOENT in PhusionPassenger::Rack::ApplicationSpawner (No such file or directory - ../config.yml) (process 97004, thread #<Thread:0x1001d5258>):
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `initialize'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `open'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `load_file'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:30:in `parse_yaml_config'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:21:in `load'
+	from config.ru:12
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `instance_eval'
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `initialize'
+	from config.ru:1:in `new'
+	from config.ru:1
+[ pid=97004 thr=2148444460 file=utils.rb:176 time=2010-11-25 11:17:21.875 ]: *** Exception Errno::ENOENT in PhusionPassenger::Rack::ApplicationSpawner (No such file or directory - ../config.yml) (process 97004, thread #<Thread:0x1001d5258>):
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `initialize'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `open'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `load_file'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:30:in `parse_yaml_config'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:21:in `load'
+	from config.ru:12
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `instance_eval'
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `initialize'
+	from config.ru:1:in `new'
+	from config.ru:1
+[ pid=97004 thr=2148444460 file=utils.rb:176 time=2010-11-25 11:17:23.005 ]: *** Exception Errno::ENOENT in PhusionPassenger::Rack::ApplicationSpawner (No such file or directory - ../config.yml) (process 97004, thread #<Thread:0x1001d5258>):
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `initialize'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `open'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `load_file'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:30:in `parse_yaml_config'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:21:in `load'
+	from config.ru:12
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `instance_eval'
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `initialize'
+	from config.ru:1:in `new'
+	from config.ru:1
+[ pid=97004 thr=2148444460 file=utils.rb:176 time=2010-11-25 11:17:24.849 ]: *** Exception Errno::ENOENT in PhusionPassenger::Rack::ApplicationSpawner (No such file or directory - ../config.yml) (process 97004, thread #<Thread:0x1001d5258>):
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `initialize'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `open'
+	from /Users/ihower/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/yaml.rb:143:in `load_file'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:30:in `parse_yaml_config'
+	from /Users/ihower/projects/simple_cas/lib/castronaut/configuration.rb:21:in `load'
+	from config.ru:12
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `instance_eval'
+	from /Users/ihower/.rvm/gems/ree-1.8.7-2010.02/gems/rack-1.2.1/lib/rack/builder.rb:46:in `initialize'
+	from config.ru:1:in `new'
+	from config.ru:1

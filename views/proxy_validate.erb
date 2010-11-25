@@ -1,0 +1,21 @@
+<cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+<% if presenter.proxy_ticket_result.valid? %>
+  <cas:authenticationSuccess>
+    <cas:user><%= presenter.username.to_s.to_xs %></cas:user>
+    <% if presenter.proxy_granting_ticket_iou %>
+    <cas:proxyGrantingTicket><%= presenter.proxy_granting_ticket_iou.to_s.to_xs %></cas:proxyGrantingTicket>
+    <% end %>
+    <% if presenter.proxies %>
+    <cas:proxies>
+    <% presenter.proxies.each do |proxy| %>
+    <cas:proxy><%= proxy %></cas:proxy>
+    <% end %>
+    </cas:proxies>
+    <% end %>
+  </cas:authenticationSuccess>
+<% else %>
+  <cas:authenticationFailure code="<%= presenter.proxy_ticket_result.message_category %>">
+  <%= presenter.proxy_ticket_result.message %>
+  </cas:authenticationFailure>
+<% end %>
+</cas:serviceResponse>

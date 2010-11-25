@@ -1,0 +1,28 @@
+h1. SimpleCAS
+
+CAS Server
+
+h2. Description
+
+SimpleCAS is forked from "Castronaut":https://github.com/relevance/castronaut
+It's an server implementation for the CAS (version 2.0) protocol.
+
+Comparing with Castronaut, the SimpleCAS
+
+* Upgrade to Sinatra 1.0, ActiveSupport and ActiveRecord 3.0.3.
+* Clean up some unnecessary code. Make the sinatra application more intuitive.
+* Add a "demo" authentication adapter, it always return true.
+
+h2. Requirements
+
+* Sinatra 1.0
+* ActiveSupport 3.0.3
+* ActiveRecord 3.0.3
+
+h2. Usage
+
+passenger start
+
+h2. Configuration
+
+* See config.yml

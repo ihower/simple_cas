@@ -1,0 +1,122 @@
+html, body {
+   padding: 0;
+   margin: 0;
+ }
+ 
+ * {
+   text-shadow: 0 0 0 #000;
+ }
+ 
+ body {    
+   font-family: Verdana, sans-serif;
+   font-size: 14px;
+   font-size-adjust: 0.5;  
+   padding-top: 10%;
+ }
+ 
+ body #header, body #content {
+   margin: 0 auto;
+ }
+ 
+ body #header {
+   width: 632px;
+   padding: 4px 0;
+   margin-bottom: 10px;
+   border-bottom: 1px solid #e7e7e7;
+ }
+ 
+ body #content {
+   width: 600px;
+   border: 8px solid #DEDED9;   
+   padding: 8px;
+  
+ }
+ 
+ h1 {
+   margin: 0;
+   padding: 0;    
+   font-size: 42px;
+   font-style: normal;
+   font-weight: bold;
+   text-transform: normal;
+   letter-spacing: -2px;    
+   line-height: 1.2em;    
+ }
+ 
+ * html h1 {
+   font-size: 38px;
+ }
+ 
+ h1 a {
+   text-decoration: none;
+   color: #000;
+ }
+ 
+ form {
+   font-size: 16px;
+   padding: 4px 4px 0 4px;
+   line-height: 1.2em;
+ }
+ 
+ p.flash {
+   background-color: #FFCCCC;
+   border: 2px solid #990000;
+   padding: 4px;
+   color:  #990000;
+ }
+ 
+ form p.instruction {
+   margin: 2px;
+ }
+   
+ form label {
+   display: block;  
+   padding-bottom: 2px;
+ }
+ 
+ form input {
+   font-size: 16px;
+   margin: 2px 0;
+   padding: 4px;
+   width: 45%;
+   background-color: #f3f3f3;
+   border: 1px solid #c0c0c0;    
+   border-top: 2px solid #c0c0c0;
+   border-right: 2px solid #c0c0c0;    
+ }
+ 
+ form .field {
+   padding: 2px;
+   margin-bottom: 4px;
+ }
+ 
+ form .buttons {
+   height: 24px;
+   clear: both;
+   display: block;
+   text-align: right;
+   margin: 4px;
+   padding-bottom: 4px;   
+ }
+  
+ * html form .buttons {
+     padding-bottom: 2px;
+ }
+ 
+ form .buttons input.button.login {
+   display: inline;
+   width: auto;
+   color: #fff;
+   padding: 4px 8px;
+   border: 1px solid #336699;
+   background: #6699CC;
+   font-weight: 900;
+ }
+ 
+ * html form .buttons input.button.login {
+   margin-bottom: 0;
+ }
+ 
+ * html form {
+   padding-bottom: 0;
+ }

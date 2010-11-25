@@ -1,0 +1,200 @@
+# Logfile created on Thu Nov 25 11:17:35 +0800 2010 by logger.rb
+Nov 25 11:17:35 [97069]: DEBUG - Castronaut::Configuration - initializing with parameters
+Nov 25 11:17:35 [97069]: DEBUG - --> log_level = "Logger::DEBUG"
+Nov 25 11:17:35 [97069]: DEBUG - --> extra_ui_actions = {"Forgot Password"=>"http://example.com/"}
+Nov 25 11:17:35 [97069]: DEBUG - --> ssl_enabled = false
+Nov 25 11:17:35 [97069]: DEBUG - --> organization_name = "HTCSense.com SSO"
+Nov 25 11:17:35 [97069]: DEBUG - --> cas_adapter = {"digest_stretches"=>10, "adapter"=>"htcsense", "site_key"=>"03523xxxx093023aaaa0985225bbb098290cccc9"}
+Nov 25 11:17:35 [97069]: DEBUG - --> cas_database = {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:17:35 [97069]: DEBUG - --> log_directory = "log"
+Nov 25 11:17:35 [97069]: DEBUG - --> environment = "development"
+Nov 25 11:17:35 [97069]: DEBUG - --> server_port = 4567
+Nov 25 11:17:35 [97069]: DEBUG - Castronaut::Configuration - initialization complete
+Nov 25 11:17:35 [97069]: INFO - Castronaut::Configuration - Connecting to cas database using {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:17:35 [97069]: DEBUG - Castronaut::Configuration - Migrating to the latest version using migrations in /Users/ihower/projects/simple_cas/lib/castronaut/db
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (0.2ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (1.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (16.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.1ms)[0m   SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Nov 25 11:17:35 [97069]: INFO - Migrating to CreateCasDatabase (1)
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.3ms)[0m  CREATE TABLE "login_tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket" varchar(255) NOT NULL, "client_hostname" varchar(255) NOT NULL, "consumed_at" datetime, "created_at" datetime NOT NULL) 
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.1ms)[0m  CREATE TABLE "service_tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "proxy_granting_ticket_id" integer, "ticket_granting_ticket_id" integer, "ticket" varchar(255) NOT NULL, "client_hostname" varchar(255) NOT NULL, "service" text NOT NULL, "username" varchar(255) NOT NULL, "type" varchar(255), "consumed_at" datetime, "created_at" datetime NOT NULL) 
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.1ms)[0m  CREATE TABLE "ticket_granting_tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket" varchar(255) NOT NULL, "client_hostname" varchar(255) NOT NULL, "username" varchar(255) NOT NULL, "created_at" datetime NOT NULL) 
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:17:35 [97069]: DEBUG - [1m[35mSQL (0.1ms)[0m  CREATE TABLE "proxy_granting_tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "service_ticket_id" integer NOT NULL, "ticket" varchar(255) NOT NULL, "client_hostname" varchar(255) NOT NULL, "iou" varchar(255) NOT NULL, "created_at" datetime NOT NULL) 
+Nov 25 11:17:35 [97069]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('1')[0m
+Nov 25 11:17:35 [97078]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for 
+Nov 25 11:17:35 [97078]: DEBUG - [1m[35mSQL (0.7ms)[0m   SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Nov 25 11:17:36 [97078]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:17:35.986523', NULL, 'LT-1290655055r8F36252D6594290E77')[0m
+Nov 25 11:17:37 [97078]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for 
+Nov 25 11:17:37 [97078]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:17:37.223406', NULL, 'LT-1290655057rD69F3B4D6C18B26CAE')
+Nov 25 11:17:44 [97078]: DEBUG - [1m[36mCastronaut::Models::LoginTicket Load (0.2ms)[0m  [1mSELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655057rD69F3B4D6C18B26CAE') LIMIT 1[0m
+Nov 25 11:17:44 [97078]: DEBUG - [1m[35mAREL (0.2ms)[0m  UPDATE "login_tickets" SET "consumed_at" = '2010-11-25 11:17:44.613188' WHERE ("login_tickets"."id" = 2)
+Nov 25 11:17:44 [97078]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:17:44.626719', NULL, 'LT-1290655064r9D038436BB35C03F2E')[0m
+Nov 25 11:17:50 [97078]: DEBUG - [1m[35mCastronaut::Models::LoginTicket Load (0.2ms)[0m  SELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655064r9D038436BB35C03F2E') LIMIT 1
+Nov 25 11:17:50 [97078]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mUPDATE "login_tickets" SET "consumed_at" = '2010-11-25 11:17:50.944374' WHERE ("login_tickets"."id" = 3)[0m
+Nov 25 11:17:50 [97078]: DEBUG - [1m[35mAREL (0.3ms)[0m  INSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:17:50.958671', NULL, 'LT-1290655070r11C6626676DC88E299')
+Nov 25 11:17:50 [97078]: INFO - Castronaut::Presenters::ProcessLogin - Logging in with username: ihower@gmail.com, login ticket: LT-1290655070r11C6626676DC88E299, service: 
+Nov 25 11:17:54 [97078]: DEBUG - [1m[36mSQL (0.2ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:17:54 [97078]: DEBUG - [1m[35mAREL (2.1ms)[0m  INSERT INTO "ticket_granting_tickets" ("ticket", "username", "client_hostname", "created_at") VALUES ('TGC-1290655074r843BCAE214068BA612', 'ihower@gmail.com', '127.0.0.1', '2010-11-25 11:17:54.211487')
+Nov 25 11:19:25 [97078]: DEBUG - [1m[36mCastronaut::Models::LoginTicket Load (0.2ms)[0m  [1mSELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655064r9D038436BB35C03F2E') LIMIT 1[0m
+Nov 25 11:19:25 [97078]: INFO - Castronaut::TicketResult -  The login ticket you provided has already been used up. Please try logging in again. for #<Castronaut::Models::LoginTicket:0x1023ec558>
+Nov 25 11:19:25 [97078]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:19:25.447682', NULL, 'LT-1290655165rA3082B137406E378BE')
+Nov 25 11:19:25 [97078]: INFO - Castronaut::Presenters::ProcessLogin - Logging in with username: ihower@gmail.com, login ticket: LT-1290655165rA3082B137406E378BE, service: 
+Nov 25 11:19:27 [97078]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "ticket_granting_tickets" ("ticket", "username", "client_hostname", "created_at") VALUES ('TGC-1290655167rCC704454597EB44F85', 'ihower@gmail.com', '127.0.0.1', '2010-11-25 11:19:27.032470')[0m
+Nov 25 11:19:48 [97238]: DEBUG - Castronaut::Configuration - initializing with parameters
+Nov 25 11:19:48 [97238]: DEBUG - --> log_level = "Logger::DEBUG"
+Nov 25 11:19:48 [97238]: DEBUG - --> extra_ui_actions = {"Forgot Password"=>"http://example.com/"}
+Nov 25 11:19:48 [97238]: DEBUG - --> ssl_enabled = false
+Nov 25 11:19:48 [97238]: DEBUG - --> organization_name = "HTCSense.com SSO"
+Nov 25 11:19:48 [97238]: DEBUG - --> cas_adapter = {"digest_stretches"=>10, "adapter"=>"htcsense", "site_key"=>"03523xxxx093023aaaa0985225bbb098290cccc9"}
+Nov 25 11:19:48 [97238]: DEBUG - --> cas_database = {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:19:48 [97238]: DEBUG - --> log_directory = "log"
+Nov 25 11:19:48 [97238]: DEBUG - --> environment = "development"
+Nov 25 11:19:48 [97238]: DEBUG - --> server_port = 4567
+Nov 25 11:19:48 [97238]: DEBUG - Castronaut::Configuration - initialization complete
+Nov 25 11:19:48 [97238]: INFO - Castronaut::Configuration - Connecting to cas database using {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:19:48 [97238]: DEBUG - Castronaut::Configuration - Migrating to the latest version using migrations in /Users/ihower/projects/simple_cas/lib/castronaut/db
+Nov 25 11:19:48 [97238]: DEBUG - [1m[36mSQL (0.4ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:19:48 [97238]: DEBUG - [1m[35mSQL (0.1ms)[0m   SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Nov 25 11:19:48 [97238]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Nov 25 11:19:48 [97238]: INFO - Migrating to CreateCasDatabase (1)
+Nov 25 11:19:48 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for 
+Nov 25 11:19:48 [97240]: DEBUG - [1m[35mAREL (0.3ms)[0m  INSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655188rEA2553FE3F4910F5B9', '2010-11-25 11:19:48.174203', '127.0.0.1')
+Nov 25 11:19:54 [97240]: DEBUG - [1m[36mCastronaut::Models::LoginTicket Load (0.2ms)[0m  [1mSELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655188rEA2553FE3F4910F5B9') LIMIT 1[0m
+Nov 25 11:19:54 [97240]: DEBUG - [1m[35mAREL (0.2ms)[0m  UPDATE "login_tickets" SET "consumed_at" = '2010-11-25 11:19:54.921448' WHERE ("login_tickets"."id" = 6)
+Nov 25 11:19:54 [97240]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655194rACACA39C4185806594', '2010-11-25 11:19:54.935838', '127.0.0.1')[0m
+Nov 25 11:19:54 [97240]: INFO - Castronaut::Presenters::ProcessLogin - Logging in with username: ihower@gmail.com, login ticket: LT-1290655194rACACA39C4185806594, service: 
+Nov 25 11:19:56 [97240]: DEBUG - [1m[35mAREL (0.3ms)[0m  INSERT INTO "ticket_granting_tickets" ("ticket", "username", "created_at", "client_hostname") VALUES ('TGC-1290655196rE8CAC61273EED2CED1', 'ihower@gmail.com', '2010-11-25 11:19:56.136467', '127.0.0.1')
+Nov 25 11:20:02 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:20:02 [97240]: DEBUG - [1m[36mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  [1mSELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1[0m
+Nov 25 11:20:02 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:20:02 [97240]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655202r6CCCB676FCF065F7D0', '2010-11-25 11:20:02.971420', '127.0.0.1')
+Nov 25 11:20:04 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:20:04 [97240]: DEBUG - [1m[36mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  [1mSELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1[0m
+Nov 25 11:20:04 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:20:04 [97240]: DEBUG - [1m[35mAREL (0.3ms)[0m  INSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655204r3D6766FA823A5DB281', '2010-11-25 11:20:04.363289', '127.0.0.1')
+Nov 25 11:20:04 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:20:04 [97240]: DEBUG - [1m[36mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  [1mSELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1[0m
+Nov 25 11:20:04 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:20:04 [97240]: DEBUG - [1m[35mAREL (0.3ms)[0m  INSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655204rF8C27A8F8CD8BAC5D5', '2010-11-25 11:20:04.938815', '127.0.0.1')
+Nov 25 11:20:05 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:20:05 [97240]: DEBUG - [1m[36mCastronaut::Models::TicketGrantingTicket Load (0.3ms)[0m  [1mSELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1[0m
+Nov 25 11:20:05 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:20:05 [97240]: DEBUG - [1m[35mAREL (0.3ms)[0m  INSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655205r8F1ED9DE3FACB1EFE9', '2010-11-25 11:20:05.313234', '127.0.0.1')
+Nov 25 11:20:05 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:20:05 [97240]: DEBUG - [1m[36mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  [1mSELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1[0m
+Nov 25 11:20:05 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:20:05 [97240]: DEBUG - [1m[35mAREL (0.3ms)[0m  INSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655205r5858C47592B05AD1C1', '2010-11-25 11:20:05.452634', '127.0.0.1')
+Nov 25 11:20:05 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:20:05 [97240]: DEBUG - [1m[36mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  [1mSELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1[0m
+Nov 25 11:20:05 [97240]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:20:05 [97240]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("consumed_at", "ticket", "created_at", "client_hostname") VALUES (NULL, 'LT-1290655205rE65FC25C58B80A1748', '2010-11-25 11:20:05.637526', '127.0.0.1')
+Nov 25 11:27:28 [97801]: DEBUG - Castronaut::Configuration - initializing with parameters
+Nov 25 11:27:28 [97801]: DEBUG - --> log_level = "Logger::DEBUG"
+Nov 25 11:27:28 [97801]: DEBUG - --> extra_ui_actions = {"Forgot Password"=>"http://example.com/"}
+Nov 25 11:27:28 [97801]: DEBUG - --> organization_name = "Simple SSO"
+Nov 25 11:27:28 [97801]: DEBUG - --> cas_adapter = {"adapter"=>"demo"}
+Nov 25 11:27:28 [97801]: DEBUG - --> cas_database = {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:27:28 [97801]: DEBUG - --> log_directory = "log"
+Nov 25 11:27:28 [97801]: DEBUG - Castronaut::Configuration - initialization complete
+Nov 25 11:27:28 [97801]: INFO - Castronaut::Configuration - Connecting to cas database using {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:27:28 [97801]: DEBUG - Castronaut::Configuration - Migrating to the latest version using migrations in /Users/ihower/projects/simple_cas/lib/castronaut/db
+Nov 25 11:27:28 [97801]: DEBUG - [1m[36mSQL (0.4ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:27:28 [97801]: DEBUG - [1m[35mSQL (0.1ms)[0m   SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Nov 25 11:27:28 [97801]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Nov 25 11:27:28 [97801]: INFO - Migrating to CreateCasDatabase (1)
+Nov 25 11:27:28 [97803]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:27:28 [97803]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.1ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1
+Nov 25 11:27:28 [97803]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:27:28 [97803]: DEBUG - [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "ticket", "consumed_at", "created_at") VALUES ('127.0.0.1', 'LT-1290655648r7E865A6C9F0E64F338', NULL, '2010-11-25 11:27:28.889668')[0m
+Nov 25 11:27:30 [97803]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:27:30 [97803]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1
+Nov 25 11:27:30 [97803]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:27:30 [97803]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "ticket", "consumed_at", "created_at") VALUES ('127.0.0.1', 'LT-1290655650rB5E72E5642E89D12F1', NULL, '2010-11-25 11:27:30.321373')[0m
+Nov 25 11:27:32 [97803]: DEBUG - [1m[35mCastronaut::Models::LoginTicket Load (0.2ms)[0m  SELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655650rB5E72E5642E89D12F1') LIMIT 1
+Nov 25 11:27:32 [97803]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mUPDATE "login_tickets" SET "consumed_at" = '2010-11-25 11:27:32.762626' WHERE ("login_tickets"."id" = 15)[0m
+Nov 25 11:27:32 [97803]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("client_hostname", "ticket", "consumed_at", "created_at") VALUES ('127.0.0.1', 'LT-1290655652r6860C124CE15306098', NULL, '2010-11-25 11:27:32.775631')
+Nov 25 11:27:32 [97803]: INFO - Castronaut::Presenters::ProcessLogin - Logging in with username: tew, login ticket: LT-1290655652r6860C124CE15306098, service: 
+Nov 25 11:28:42 [97908]: DEBUG - Castronaut::Configuration - initializing with parameters
+Nov 25 11:28:42 [97908]: DEBUG - --> log_level = "Logger::DEBUG"
+Nov 25 11:28:42 [97908]: DEBUG - --> extra_ui_actions = {"Forgot Password"=>"http://example.com/"}
+Nov 25 11:28:42 [97908]: DEBUG - --> organization_name = "Simple SSO"
+Nov 25 11:28:42 [97908]: DEBUG - --> cas_adapter = {"adapter"=>"demo"}
+Nov 25 11:28:42 [97908]: DEBUG - --> cas_database = {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:28:42 [97908]: DEBUG - --> log_directory = "log"
+Nov 25 11:28:42 [97908]: DEBUG - Castronaut::Configuration - initialization complete
+Nov 25 11:28:42 [97908]: INFO - Castronaut::Configuration - Connecting to cas database using {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:28:42 [97908]: DEBUG - Castronaut::Configuration - Migrating to the latest version using migrations in /Users/ihower/projects/simple_cas/lib/castronaut/db
+Nov 25 11:28:42 [97908]: DEBUG - [1m[36mSQL (0.4ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:28:42 [97908]: DEBUG - [1m[35mSQL (0.1ms)[0m   SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Nov 25 11:28:42 [97908]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Nov 25 11:28:42 [97908]: INFO - Migrating to CreateCasDatabase (1)
+Nov 25 11:28:42 [97917]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655196rE8CAC61273EED2CED1
+Nov 25 11:28:43 [97917]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.1ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655196rE8CAC61273EED2CED1') LIMIT 1
+Nov 25 11:28:43 [97917]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655196rE8CAC61273EED2CED1] for [ihower@gmail.com] successfully validated.
+Nov 25 11:28:43 [97917]: DEBUG - [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "login_tickets" ("created_at", "client_hostname", "consumed_at", "ticket") VALUES ('2010-11-25 11:28:43.103908', '127.0.0.1', NULL, 'LT-1290655723r87CB91A6BCC46F129E')[0m
+Nov 25 11:28:46 [97917]: DEBUG - [1m[35mCastronaut::Models::LoginTicket Load (0.2ms)[0m  SELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655723r87CB91A6BCC46F129E') LIMIT 1
+Nov 25 11:28:46 [97917]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mUPDATE "login_tickets" SET "consumed_at" = '2010-11-25 11:28:46.079245' WHERE ("login_tickets"."id" = 17)[0m
+Nov 25 11:28:46 [97917]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("created_at", "client_hostname", "consumed_at", "ticket") VALUES ('2010-11-25 11:28:46.091852', '127.0.0.1', NULL, 'LT-1290655726r4A89308419F634A3B0')
+Nov 25 11:28:46 [97917]: INFO - Castronaut::Presenters::ProcessLogin - Logging in with username: xxx, login ticket: LT-1290655726r4A89308419F634A3B0, service: 
+Nov 25 11:28:46 [97917]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "ticket_granting_tickets" ("client_hostname", "ticket", "created_at", "username") VALUES ('127.0.0.1', 'TGC-1290655726r9C1C1FBB5EBE56287E', '2010-11-25 11:28:46.105250', 'xxx')[0m
+Nov 25 11:28:54 [97917]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655726r9C1C1FBB5EBE56287E
+Nov 25 11:28:54 [97917]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655726r9C1C1FBB5EBE56287E') LIMIT 1
+Nov 25 11:28:54 [97917]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655726r9C1C1FBB5EBE56287E] for [xxx] successfully validated.
+Nov 25 11:28:54 [97917]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "login_tickets" ("created_at", "client_hostname", "consumed_at", "ticket") VALUES ('2010-11-25 11:28:54.966596', '127.0.0.1', NULL, 'LT-1290655734r9C82BCEB2D92CF57DA')[0m
+Nov 25 11:28:56 [97917]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655726r9C1C1FBB5EBE56287E
+Nov 25 11:28:56 [97917]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655726r9C1C1FBB5EBE56287E') LIMIT 1
+Nov 25 11:28:56 [97917]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655726r9C1C1FBB5EBE56287E] for [xxx] successfully validated.
+Nov 25 11:28:56 [97917]: DEBUG - [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "login_tickets" ("created_at", "client_hostname", "consumed_at", "ticket") VALUES ('2010-11-25 11:28:56.030185', '127.0.0.1', NULL, 'LT-1290655736r9263833A5545972CA5')[0m
+Nov 25 11:29:22 [97980]: DEBUG - Castronaut::Configuration - initializing with parameters
+Nov 25 11:29:22 [97980]: DEBUG - --> log_level = "Logger::DEBUG"
+Nov 25 11:29:22 [97980]: DEBUG - --> extra_ui_actions = {"Forgot Password"=>"http://example.com/"}
+Nov 25 11:29:22 [97980]: DEBUG - --> organization_name = "Simple SSO"
+Nov 25 11:29:22 [97980]: DEBUG - --> cas_adapter = {"adapter"=>"demo"}
+Nov 25 11:29:22 [97980]: DEBUG - --> cas_database = {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:29:22 [97980]: DEBUG - --> log_directory = "log"
+Nov 25 11:29:22 [97980]: DEBUG - Castronaut::Configuration - initialization complete
+Nov 25 11:29:22 [97980]: INFO - Castronaut::Configuration - Connecting to cas database using {"timeout"=>5000, "adapter"=>"sqlite3", "database"=>"db/cas.db"}
+Nov 25 11:29:22 [97980]: DEBUG - Castronaut::Configuration - Migrating to the latest version using migrations in /Users/ihower/projects/simple_cas/lib/castronaut/db
+Nov 25 11:29:22 [97980]: DEBUG - [1m[36mSQL (0.4ms)[0m  [1m SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'[0m
+Nov 25 11:29:22 [97980]: DEBUG - [1m[35mSQL (0.1ms)[0m   SELECT name FROM sqlite_master WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Nov 25 11:29:22 [97980]: DEBUG - [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Nov 25 11:29:22 [97980]: INFO - Migrating to CreateCasDatabase (1)
+Nov 25 11:29:22 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655726r9C1C1FBB5EBE56287E
+Nov 25 11:29:22 [97999]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.1ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655726r9C1C1FBB5EBE56287E') LIMIT 1
+Nov 25 11:29:22 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655726r9C1C1FBB5EBE56287E] for [xxx] successfully validated.
+Nov 25 11:29:22 [97999]: DEBUG - [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:29:22.377344', NULL, 'LT-1290655762rA40DBA1F5618A11D63')[0m
+Nov 25 11:29:23 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655726r9C1C1FBB5EBE56287E
+Nov 25 11:29:23 [97999]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655726r9C1C1FBB5EBE56287E') LIMIT 1
+Nov 25 11:29:23 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655726r9C1C1FBB5EBE56287E] for [xxx] successfully validated.
+Nov 25 11:29:23 [97999]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:29:23.832843', NULL, 'LT-1290655763r1775F8BE4D287724DE')[0m
+Nov 25 11:29:26 [97999]: DEBUG - [1m[35mCastronaut::Models::LoginTicket Load (0.2ms)[0m  SELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655763r1775F8BE4D287724DE') LIMIT 1
+Nov 25 11:29:26 [97999]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mUPDATE "login_tickets" SET "consumed_at" = '2010-11-25 11:29:26.489055' WHERE ("login_tickets"."id" = 22)[0m
+Nov 25 11:29:26 [97999]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:29:26.502265', NULL, 'LT-1290655766rB69EE7797F2ADD19F4')
+Nov 25 11:29:26 [97999]: INFO - Castronaut::Presenters::ProcessLogin - Logging in with username: qwe, login ticket: LT-1290655766rB69EE7797F2ADD19F4, service: 
+Nov 25 11:29:26 [97999]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "ticket_granting_tickets" ("created_at", "username", "client_hostname", "ticket") VALUES ('2010-11-25 11:29:26.515222', 'qwe', '127.0.0.1', 'TGC-1290655766r4242CE7DAC2FDEB718')[0m
+Nov 25 11:29:29 [97999]: DEBUG - [1m[35mCastronaut::Models::LoginTicket Load (0.2ms)[0m  SELECT "login_tickets".* FROM "login_tickets" WHERE ("login_tickets"."ticket" = 'LT-1290655766rB69EE7797F2ADD19F4') LIMIT 1
+Nov 25 11:29:29 [97999]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mUPDATE "login_tickets" SET "consumed_at" = '2010-11-25 11:29:29.099026' WHERE ("login_tickets"."id" = 23)[0m
+Nov 25 11:29:29 [97999]: DEBUG - [1m[35mAREL (0.2ms)[0m  INSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:29:29.111577', NULL, 'LT-1290655769r920FC55C7CA8305C1E')
+Nov 25 11:29:29 [97999]: INFO - Castronaut::Presenters::ProcessLogin - Logging in with username: qwe, login ticket: LT-1290655769r920FC55C7CA8305C1E, service: 
+Nov 25 11:29:29 [97999]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "ticket_granting_tickets" ("created_at", "username", "client_hostname", "ticket") VALUES ('2010-11-25 11:29:29.124049', 'qwe', '127.0.0.1', 'TGC-1290655769r7E8999D32DCF5375ED')[0m
+Nov 25 11:29:32 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655769r7E8999D32DCF5375ED
+Nov 25 11:29:32 [97999]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655769r7E8999D32DCF5375ED') LIMIT 1
+Nov 25 11:29:32 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655769r7E8999D32DCF5375ED] for [qwe] successfully validated.
+Nov 25 11:29:32 [97999]: DEBUG - [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:29:32.943816', NULL, 'LT-1290655772rEA3B5156576CBFAC85')[0m
+Nov 25 11:29:33 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655769r7E8999D32DCF5375ED
+Nov 25 11:29:33 [97999]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655769r7E8999D32DCF5375ED') LIMIT 1
+Nov 25 11:29:33 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655769r7E8999D32DCF5375ED] for [qwe] successfully validated.
+Nov 25 11:29:33 [97999]: DEBUG - [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:29:33.698136', NULL, 'LT-1290655773rF369FE2A15689781D6')[0m
+Nov 25 11:29:34 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket - Validating ticket for TGC-1290655769r7E8999D32DCF5375ED
+Nov 25 11:29:34 [97999]: DEBUG - [1m[35mCastronaut::Models::TicketGrantingTicket Load (0.2ms)[0m  SELECT "ticket_granting_tickets".* FROM "ticket_granting_tickets" WHERE ("ticket_granting_tickets"."ticket" = 'TGC-1290655769r7E8999D32DCF5375ED') LIMIT 1
+Nov 25 11:29:34 [97999]: DEBUG - Castronaut::Models::TicketGrantingTicket -[TGC-1290655769r7E8999D32DCF5375ED] for [qwe] successfully validated.
+Nov 25 11:29:34 [97999]: DEBUG - [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "login_tickets" ("client_hostname", "created_at", "consumed_at", "ticket") VALUES ('127.0.0.1', '2010-11-25 11:29:34.365953', NULL, 'LT-1290655774r509724A4CCC59E56FC')[0m
