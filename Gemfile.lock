@@ -11,6 +11,7 @@ GEM
       tzinfo (~> 0.3.23)
     activesupport (3.0.3)
     arel (2.0.2)
+    bcrypt-ruby (2.1.2)
     builder (2.1.2)
     i18n (0.4.1)
     json (1.4.6)
@@ -26,6 +27,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 3.0.0)
   activesupport (~> 3.0.0)
+  bcrypt-ruby
   json
   mysql2 (~> 0.2.4)
   sinatra (~> 1.0.0)

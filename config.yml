@@ -10,17 +10,19 @@ cas_database:
   username: root
   password: 
 
-cas_adapter:
-  adapter: demo
-
 #cas_adapter:
-#  adapter: database
-#  site_key: 03523your093023site0985225key098290here9
-#  digest_stretches: 10
-#  database:
-#    adapter: sqlite3
-#    database: db/cas_adapter.db
-#    timeout: 5000
+#  adapter: demo
+#
+cas_adapter:
+  adapter: devise
+  stretches: 10
+  pepper: "MUST BE THE SAME AS config.pepper in your_rails/config/initializers/devise.rb"
+  database:
+    adapter: mysql2
+    database: your_app_database
+    host: localhost
+    username: root
+    password:
       
 # Use this example if you are using LDAP as your authentication source
 # cas_adapter:

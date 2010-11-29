@@ -17,6 +17,8 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'castronaut', 'presen
 require File.expand_path(File.join(File.dirname(__FILE__), 'castronaut', 'presenters', 'proxy_validate'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'castronaut', 'adapters'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'castronaut', 'adapters', 'demo', 'adapter'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'castronaut', 'adapters', 'devise', 'adapter'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'castronaut', 'adapters', 'devise', 'user'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'xchar'))
 
 module Castronaut

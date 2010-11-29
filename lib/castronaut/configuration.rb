@@ -87,7 +87,14 @@ module Castronaut
 
     def connect_adapter_to_activerecord
       logger.info "#{self.class} - Connecting to cas adapter database using #{cas_adapter['database'].inspect}"
-      if cas_adapter['adapter'] == "database"
+      if cas_adapter['adapter'] == "devise"
+        Castronaut::Adapters::Devise::User.establish_connection(cas_adapter['database'])
+        Castronaut::Adapters::Devise::User.logger = logger
+        
+        Castronaut::Adapters::Devise::User.pepper = cas_adapter['pepper']
+        Castronaut::Adapters::Devise::User.stretches = cas_adapter['stretches']
+        
+      elsif cas_adapter['adapter'] == "database"
         Castronaut::Adapters::RestfulAuthentication::User.establish_connection(cas_adapter['database'])
         Castronaut::Adapters::RestfulAuthentication::User.logger = logger
       elsif cas_adapter['adapter'] == "development"
@@ -95,8 +102,8 @@ module Castronaut
         Castronaut::Adapters::Development::User.logger = logger
       end
 
-      unless ENV["test"] == "true"
-        if Castronaut::Adapters::RestfulAuthentication::User.connection.tables.empty?
+      if ENV["test"] != "true" && cas_adapter['adapter'] == "devise"
+        if Castronaut::Adapters::Devise::User.connection.tables.empty?
           STDERR.puts "#{self.class} - There are no tables in the given database.\nConfig details:\n#{config_hash.inspect}"
           Kernel.exit(0)
         end
