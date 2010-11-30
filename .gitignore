@@ -1,3 +1,4 @@
+config.yml
 db/cas.db
 log/castronaut.log
 log/passenger.3010.log
